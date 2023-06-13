@@ -61,7 +61,10 @@ body * {
 
 #profile img {
   width: 112px;
+  height: 111px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
+
 /*    OPÇÃO 2 (não alinha texto)
 
 
@@ -84,7 +87,9 @@ body * {
   position: relative;
   width: 64px;
   margin: 4px auto;
-}
+
+} 
+
 
 #switch button{
   width: 32px;
@@ -99,11 +104,19 @@ body * {
   z-index: 1;
   transform: translateY(-50%);
   /*transform: translateY(-12.5%);*/
+  animation: slide-out 0.2s;
+
 }
 
+#switch button:hover{
+  outline: 8px solid var(--highlight-color);
+}
+
+
+
 .light #switch button {
-right: 0;
-left: initial;
+  animation: slide-in 0.2s forwards;
+
 }
 
 #switch span{
@@ -181,16 +194,42 @@ footer{
   padding: 24px;
   text-align: center;
   font-size: 14px;
+  
+}
+footer :hover{
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 1));
 }
 
 /* media querries */
 
 @media(min-width: 700px) {
-:root {
-  --bg-url: url(./assets/bg-desktop-dark.jpg);
+  :root {
+    --bg-url: url(./assets/bg-desktop-dark.jpg);
+  }
+  .light{
+    --bg-url: url(./assets/bg-desktop-light.jpg);
+
+  }
 }
-.light{
---bg-url: url(./assets/bg-desktop-dark.jpg);
+
+/* animation */
+
+@keyframes slide-in {
+  from{
+    left: 0;
+  }
+  to{
+    left: 50%;
+  }
 
 }
+
+@keyframes slide-out {
+  from{
+    left: 50%;
+  }
+  to{
+    left: 0;
+  }
+
 }
